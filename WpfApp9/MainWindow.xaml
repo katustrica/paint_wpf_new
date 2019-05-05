@@ -1,0 +1,131 @@
+﻿<Window x:Class="RealArtist.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MusaAlbum" Height="550" Width="800" Background="CadetBlue" Visibility="Visible" Icon="pack://application:,,,/Properties/image/icon.png" HorizontalAlignment="Center"  VerticalAlignment="Center" >
+    <Window.Resources>
+
+    </Window.Resources>
+    <Grid Background="AliceBlue" Margin="5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="35*" MaxWidth="50"></ColumnDefinition>
+            <ColumnDefinition Width="19*"/>
+            <ColumnDefinition Width="682*" MinWidth="300"></ColumnDefinition>
+            <ColumnDefinition Width="50*" MaxWidth="50"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="50" MinHeight="30" MaxHeight="60"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Name="MainTools" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+            <Menu x:Name="menu"  VerticalAlignment="Center" HorizontalAlignment="Center">
+                <MenuItem Header="Файл">      
+                    <MenuItem Header="Открыть" ></MenuItem>
+                    <MenuItem Header="Закрыть" ></MenuItem>
+                    <MenuItem Header="Назад" ></MenuItem>      
+                    <MenuItem Header="Очистить" ></MenuItem>
+                    <MenuItem Header="Закрыть" ></MenuItem>
+                </MenuItem>
+            </Menu>
+            <Label>TOOLS</Label>
+            <Button Name="Pencil" Height="40" Width="40" Click="Pencil_Click">
+                <Image Source="pack://application:,,,/Properties/image/pencil.png"/>
+            </Button>
+            <Button Name="PenEraser" Height="40" Width="40" Click="PenEraser_Click">
+                <Image Source="pack://application:,,,/Properties/image/eraser.png" ></Image>
+            </Button>
+            <Button Name="Brush" Height="40" Width="40" Click="Brush_Click" ToolTip="МОЖНО РИСОВАТЬ КРУГИ И ОВАЛЫ">
+                <Image Source="pack://application:,,,/Properties/image/brush.png"/>
+            </Button>
+            <TextBlock>
+                    <Label>H</Label>
+                    <TextBox Name="HeigthBrush" Width="20" Text="10"/>
+            </TextBlock>
+            <TextBlock>
+                <Label>W</Label>
+                    <TextBox Name="WidthBrush" Width="17" Text="3"></TextBox>
+            </TextBlock>
+
+            <Button Name="BSmall" Height="40" Width="40" Click="BSmall_Click">
+                <Ellipse Fill="Black" Height="5" Width="5"></Ellipse>
+            </Button>
+            <Button Name="BMiddle" Height="40" Width="40" Click="BMiddle_Click">
+                <Ellipse Fill="Black" Height="10" Width="10"></Ellipse>
+            </Button>
+            <Button Name="BBig" Height="40" Width="40" Click="BBig_Click">
+                <Ellipse Fill="Black" Height="15" Width="15"></Ellipse>
+            </Button>
+            <Button Name="BClear" Content="CLEAR" Width="40" Click="BClear_Click"/>
+
+        </StackPanel>
+        <StackPanel Name="OtherTools" Grid.Row="0" Grid.Column="3">
+            <Button Name="SizeOfAlbum" Margin="0,5,0,0" Height="20" ToolTip="Установить размер листа" Content="Size" Click="SizeOfAlbum_Click"/>
+            <Label>Height</Label>
+            <TextBox Name="HeightAlbum" Text="550"></TextBox>
+            <Label>Width</Label>
+            <TextBox Name="WidthAlbum" Text="800"></TextBox>
+            <Button Name="BRectangle" Margin="0,5,0,0" Height="20" Click="BRectangle_Click">
+                <Rectangle Height="12" Width="30" Stroke="Black" StrokeThickness="3"></Rectangle>
+            </Button>
+            <Button Name="BCircle" Margin="0,5,0,0" Height="20" Click="BCircle_Click">
+                <Ellipse Height="15" Width="15" Stroke="Black" StrokeThickness="2"></Ellipse>
+            </Button>
+            <Button Name="BEllipse" Height="20" Margin="0,5,0,0" Click="BEllipse_Click">
+                <Ellipse Height="10" Width="30" Stroke="Black" StrokeThickness="3"></Ellipse>
+            </Button>
+            <Button Name="BLine" Margin="0,5,-0.255,0" Height="20" HorizontalAlignment="Right" Width="50" Click="BLine_Click">
+                <Line X1="5" X2="35" Y1="5" Y2="9" Stroke="Black" StrokeThickness="3"></Line>
+            </Button>
+
+            <Button Name="BPolyLine" Height="20" Margin="0,5,0,0" Click="BPolyLine_Click" HorizontalAlignment="Left" Width="50">
+                <Polyline Stroke="Black" StrokeThickness="2" Points="5,10 15,2 35,10"></Polyline>
+            </Button>
+
+
+        </StackPanel>
+        <StackPanel Name="BottonPanel" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Orientation="Horizontal">
+            <!--<Button Name="BNowColor" Margin="10,0,0,0" Background="{Binding ElementName=Album, Path=DefaultDrawingAttributes.Color  }" Height="35" Width="35"></Button>-->
+            <Button Name="BNowColor" Margin="10,0,0,0" Height="35" Width="35" RenderTransformOrigin="0.5,0.5">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-1.134"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+            </Button>
+            <Button Name="BBlack" Margin="10,0,0,0" Background="Black" Height="30" Width="30" Click="BBlack_Click"></Button>
+            <Button Name="BGray" Background="Gray" Height="30" Width="30" Click="BGray_Click"></Button>
+            <Button Name="BWhite" Background="White" Height="30" Width="30" Click="BWhite_Click"></Button>
+            <Button Name="BREd"  Background="Red" Height="30" Width="30" Click="BRed_Click"></Button>
+            <Button Name="BOrange" Background="Orange" Height="30" Width="30" Click="BOrange_Click"></Button>
+            <Button Name="BYellow" Background="Yellow" Height="30" Width="30" Click="BYellow_Click"></Button>
+            <Button Name="BLawnGreen" Background="LawnGreen" Height="30" Width="30" Click="BLawnGreen_Click"></Button>
+            <Button Name="BGreen" Background="Green" Height="30" Width="30" Click="BGreen_Click"></Button>
+            <Button Name="BAquamarine" Background="Aquamarine" Height="30" Width="30" Click="BAquamarine_Click"></Button>
+            <Button Name="BSkyBlue" Background="DeepSkyBlue" Height="30" Width="30" Click="BSkyBlue_Click"></Button>
+            <Button Name="BBlue" Background="Blue" Height="30" Width="30" Click="BBlue_Click"></Button>
+            <Button Name="BPurple" Background="Purple" Height="30" Width="30" Click="BPurple_Click"></Button>
+            <Button Name="BPink" Background="HotPink" Height="30" Width="30" Click="BPink_Click"></Button>
+            <Button Name ="BBack" Margin="0,0,0,0" Height="40" Width="40" Click="BBack_Click">
+                <Image Source="pack://application:,,,/Properties/image/back.jpg"/>
+            </Button>
+            <Button Name ="SaveP" Margin="10,0,0,0" Height="40" Width="40" Click="SaveP_Click">
+                <Image Source="pack://application:,,,/Properties/image/SaveP.png"/>
+            </Button>
+            <Button Name ="OpenP" Height="40" Width="40" Click="OpenP_Click">
+                <Image Source="pack://application:,,,/Properties/image/OpenP.png" RenderTransformOrigin="2.778,0.556"/>
+            </Button>
+
+
+        </StackPanel>
+        <InkCanvas Name="Album" Cursor="Pen" Height="350" Width="650" Grid.Row="0" Grid.Column="2" Background="White" MouseLeftButtonUp="Album_PreviewMouseLeftButtonUp" PreviewMouseLeftButtonDown="Album_PreviewMouseLeftButtonDown" PreviewMouseMove="Album_PreviewMouseMove" Margin="16,54,16,55" PreviewMouseLeftButtonUp="Album_PreviewMouseLeftButtonUp">
+            <InkCanvas.DefaultDrawingAttributes>
+                <DrawingAttributes Height="2" Width="2" Color="Black"/>
+            </InkCanvas.DefaultDrawingAttributes>
+        </InkCanvas>
+
+
+    </Grid>
+</Window>
