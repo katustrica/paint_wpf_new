@@ -1,40 +1,240 @@
 ﻿<Window x:Class="RealArtist.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MusaAlbum" Height="550" Width="800" Background="CadetBlue" Visibility="Visible" Icon="pack://application:,,,/Properties/image/icon.png" HorizontalAlignment="Center"  VerticalAlignment="Center" >
+        Title="MusaAlbum" Height="731" Width="1000" Background="CadetBlue" Visibility="Visible" Icon="pack://application:,,,/Properties/image/icon.png" HorizontalAlignment="Center"  VerticalAlignment="Center" >
     <Window.Resources>
+        <Style x:Key="ImgStyleDataTrigger" TargetType="Image">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding ElementName=but, Path=IsChecked}" Value="True">
+                    <DataTrigger.EnterActions>
+                        <BeginStoryboard Name="AnimStart">
+                            <Storyboard RepeatBehavior="Forever">
+                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Source" Duration="0:0:3.0">
 
+                                    <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                        <DiscreteObjectKeyFrame.Value>
+                                            <BitmapImage UriSource="C:\Users\musa\source\repos\paint_wpf_new\WpfApp9\Properties\gif\0.gif"/>
+                                        </DiscreteObjectKeyFrame.Value>
+                                    </DiscreteObjectKeyFrame>
+                                    <DiscreteObjectKeyFrame KeyTime="0:0:.1">
+                                        <DiscreteObjectKeyFrame.Value>
+                                            <BitmapImage UriSource="C:\Users\musa\source\repos\paint_wpf_new\WpfApp9\Properties\gif\1.gif"/>
+                                        </DiscreteObjectKeyFrame.Value>
+                                    </DiscreteObjectKeyFrame>
+                                    <DiscreteObjectKeyFrame KeyTime="0:0:.2">
+                                        <DiscreteObjectKeyFrame.Value>
+                                            <BitmapImage UriSource="C:\Users\musa\source\repos\paint_wpf_new\WpfApp9\Properties\gif\2.gif"/>
+                                        </DiscreteObjectKeyFrame.Value>
+                                    </DiscreteObjectKeyFrame>
+                                    <DiscreteObjectKeyFrame KeyTime="0:0:.3">
+                                        <DiscreteObjectKeyFrame.Value>
+                                            <BitmapImage UriSource="C:\Users\musa\source\repos\paint_wpf_new\WpfApp9\Properties\gif\3.gif"/>
+                                        </DiscreteObjectKeyFrame.Value>
+                                    </DiscreteObjectKeyFrame>
+                                    <DiscreteObjectKeyFrame KeyTime="0:0:.4">
+                                        <DiscreteObjectKeyFrame.Value>
+                                            <BitmapImage UriSource="C:\Users\musa\source\repos\paint_wpf_new\WpfApp9\Properties\gif\4.gif"/>
+                                        </DiscreteObjectKeyFrame.Value>
+                                    </DiscreteObjectKeyFrame>
+                                    <DiscreteObjectKeyFrame KeyTime="0:0:.5">
+                                        <DiscreteObjectKeyFrame.Value>
+                                            <BitmapImage UriSource="C:\Users\musa\source\repos\paint_wpf_new\WpfApp9\Properties\gif\5.gif"/>
+                                        </DiscreteObjectKeyFrame.Value>
+                                    </DiscreteObjectKeyFrame>
+                                    <DiscreteObjectKeyFrame KeyTime="0:0:.6">
+                                        <DiscreteObjectKeyFrame.Value>
+                                            <BitmapImage UriSource="C:\Users\musa\source\repos\paint_wpf_new\WpfApp9\Properties\gif\6.gif"/>
+                                        </DiscreteObjectKeyFrame.Value>
+                                    </DiscreteObjectKeyFrame>
+                                    <DiscreteObjectKeyFrame KeyTime="0:0:.7">
+                                        <DiscreteObjectKeyFrame.Value>
+                                            <BitmapImage UriSource="C:\Users\musa\source\repos\paint_wpf_new\WpfApp9\Properties\gif\7.gif"/>
+                                        </DiscreteObjectKeyFrame.Value>
+                                    </DiscreteObjectKeyFrame>
+                                    <DiscreteObjectKeyFrame KeyTime="0:0:.8">
+                                        <DiscreteObjectKeyFrame.Value>
+                                            <BitmapImage UriSource="C:\Users\musa\source\repos\paint_wpf_new\WpfApp9\Properties\gif\8.gif"/>
+                                        </DiscreteObjectKeyFrame.Value>
+                                    </DiscreteObjectKeyFrame>
+                                    <DiscreteObjectKeyFrame KeyTime="0:0:.9">
+                                        <DiscreteObjectKeyFrame.Value>
+                                            <BitmapImage UriSource="C:\Users\musa\source\repos\paint_wpf_new\WpfApp9\Properties\gif\9.gif"/>
+                                        </DiscreteObjectKeyFrame.Value>
+                                    </DiscreteObjectKeyFrame>
+                                    <DiscreteObjectKeyFrame KeyTime="0:0:1.0">
+                                        <DiscreteObjectKeyFrame.Value>
+                                            <BitmapImage UriSource="C:\Users\musa\source\repos\paint_wpf_new\WpfApp9\Properties\gif\10.gif"/>
+                                        </DiscreteObjectKeyFrame.Value>
+                                    </DiscreteObjectKeyFrame>
+                                    <DiscreteObjectKeyFrame KeyTime="0:0:1.1">
+                                        <DiscreteObjectKeyFrame.Value>
+                                            <BitmapImage UriSource="C:\Users\musa\source\repos\paint_wpf_new\WpfApp9\Properties\gif\11.gif"/>
+                                        </DiscreteObjectKeyFrame.Value>
+                                    </DiscreteObjectKeyFrame>
+                                    <DiscreteObjectKeyFrame KeyTime="0:0:1.2">
+                                        <DiscreteObjectKeyFrame.Value>
+                                            <BitmapImage UriSource="C:\Users\musa\source\repos\paint_wpf_new\WpfApp9\Properties\gif\12.gif"/>
+                                        </DiscreteObjectKeyFrame.Value>
+                                    </DiscreteObjectKeyFrame>
+                                    <DiscreteObjectKeyFrame KeyTime="0:0:1.3">
+                                        <DiscreteObjectKeyFrame.Value>
+                                            <BitmapImage UriSource="C:\Users\musa\source\repos\paint_wpf_new\WpfApp9\Properties\gif\13.gif"/>
+                                        </DiscreteObjectKeyFrame.Value>
+                                    </DiscreteObjectKeyFrame>
+                                    <DiscreteObjectKeyFrame KeyTime="0:0:1.4">
+                                        <DiscreteObjectKeyFrame.Value>
+                                            <BitmapImage UriSource="C:\Users\musa\source\repos\paint_wpf_new\WpfApp9\Properties\gif\14.gif"/>
+                                        </DiscreteObjectKeyFrame.Value>
+                                    </DiscreteObjectKeyFrame>
+                                    <DiscreteObjectKeyFrame KeyTime="0:0:1.5">
+                                        <DiscreteObjectKeyFrame.Value>
+                                            <BitmapImage UriSource="C:\Users\musa\source\repos\paint_wpf_new\WpfApp9\Properties\gif\15.gif"/>
+                                        </DiscreteObjectKeyFrame.Value>
+                                    </DiscreteObjectKeyFrame>
+                                    <DiscreteObjectKeyFrame KeyTime="0:0:1.6">
+                                        <DiscreteObjectKeyFrame.Value>
+                                            <BitmapImage UriSource="C:\Users\musa\source\repos\paint_wpf_new\WpfApp9\Properties\gif\16.gif"/>
+                                        </DiscreteObjectKeyFrame.Value>
+                                    </DiscreteObjectKeyFrame>
+                                    <DiscreteObjectKeyFrame KeyTime="0:0:1.7">
+                                        <DiscreteObjectKeyFrame.Value>
+                                            <BitmapImage UriSource="C:\Users\musa\source\repos\paint_wpf_new\WpfApp9\Properties\gif\17.gif"/>
+                                        </DiscreteObjectKeyFrame.Value>
+                                    </DiscreteObjectKeyFrame>
+                                    <DiscreteObjectKeyFrame KeyTime="0:0:1.8">
+                                        <DiscreteObjectKeyFrame.Value>
+                                            <BitmapImage UriSource="C:\Users\musa\source\repos\paint_wpf_new\WpfApp9\Properties\gif\18.gif"/>
+                                        </DiscreteObjectKeyFrame.Value>
+                                    </DiscreteObjectKeyFrame>
+                                    <DiscreteObjectKeyFrame KeyTime="0:0:1.9">
+                                        <DiscreteObjectKeyFrame.Value>
+                                            <BitmapImage UriSource="C:\Users\musa\source\repos\paint_wpf_new\WpfApp9\Properties\gif\19.gif"/>
+                                        </DiscreteObjectKeyFrame.Value>
+                                    </DiscreteObjectKeyFrame>
+                                    <DiscreteObjectKeyFrame KeyTime="0:0:2.0">
+                                        <DiscreteObjectKeyFrame.Value>
+                                            <BitmapImage UriSource="C:\Users\musa\source\repos\paint_wpf_new\WpfApp9\Properties\gif\20.gif"/>
+                                        </DiscreteObjectKeyFrame.Value>
+                                    </DiscreteObjectKeyFrame>
+                                    <DiscreteObjectKeyFrame KeyTime="0:0:2.1">
+                                        <DiscreteObjectKeyFrame.Value>
+                                            <BitmapImage UriSource="C:\Users\musa\source\repos\paint_wpf_new\WpfApp9\Properties\gif\21.gif"/>
+                                        </DiscreteObjectKeyFrame.Value>
+                                    </DiscreteObjectKeyFrame>
+                                    <DiscreteObjectKeyFrame KeyTime="0:0:2.2">
+                                        <DiscreteObjectKeyFrame.Value>
+                                            <BitmapImage UriSource="C:\Users\musa\source\repos\paint_wpf_new\WpfApp9\Properties\gif\22.gif"/>
+                                        </DiscreteObjectKeyFrame.Value>
+                                    </DiscreteObjectKeyFrame>
+                                    <DiscreteObjectKeyFrame KeyTime="0:0:2.3">
+                                        <DiscreteObjectKeyFrame.Value>
+                                            <BitmapImage UriSource="C:\Users\musa\source\repos\paint_wpf_new\WpfApp9\Properties\gif\23.gif"/>
+                                        </DiscreteObjectKeyFrame.Value>
+                                    </DiscreteObjectKeyFrame>
+                                    <DiscreteObjectKeyFrame KeyTime="0:0:2.4">
+                                        <DiscreteObjectKeyFrame.Value>
+                                            <BitmapImage UriSource="C:\Users\musa\source\repos\paint_wpf_new\WpfApp9\Properties\gif\24.gif"/>
+                                        </DiscreteObjectKeyFrame.Value>
+                                    </DiscreteObjectKeyFrame>
+                                    <DiscreteObjectKeyFrame KeyTime="0:0:2.5">
+                                        <DiscreteObjectKeyFrame.Value>
+                                            <BitmapImage UriSource="C:\Users\musa\source\repos\paint_wpf_new\WpfApp9\Properties\gif\25.gif"/>
+                                        </DiscreteObjectKeyFrame.Value>
+                                    </DiscreteObjectKeyFrame>
+                                    <DiscreteObjectKeyFrame KeyTime="0:0:2.6">
+                                        <DiscreteObjectKeyFrame.Value>
+                                            <BitmapImage UriSource="C:\Users\musa\source\repos\paint_wpf_new\WpfApp9\Properties\gif\26.gif"/>
+                                        </DiscreteObjectKeyFrame.Value>
+                                    </DiscreteObjectKeyFrame>
+                                    <DiscreteObjectKeyFrame KeyTime="0:0:2.7">
+                                        <DiscreteObjectKeyFrame.Value>
+                                            <BitmapImage UriSource="C:\Users\musa\source\repos\paint_wpf_new\WpfApp9\Properties\gif\27.gif"/>
+                                        </DiscreteObjectKeyFrame.Value>
+                                    </DiscreteObjectKeyFrame>
+                                    <DiscreteObjectKeyFrame KeyTime="0:0:2.8">
+                                        <DiscreteObjectKeyFrame.Value>
+                                            <BitmapImage UriSource="C:\Users\musa\source\repos\paint_wpf_new\WpfApp9\Properties\gif\28.gif"/>
+                                        </DiscreteObjectKeyFrame.Value>
+                                    </DiscreteObjectKeyFrame>
+                                    <DiscreteObjectKeyFrame KeyTime="0:0:2.9">
+                                        <DiscreteObjectKeyFrame.Value>
+                                            <BitmapImage UriSource="C:\Users\musa\source\repos\paint_wpf_new\WpfApp9\Properties\gif\29.gif"/>
+                                        </DiscreteObjectKeyFrame.Value>
+                                    </DiscreteObjectKeyFrame>
+                                    <DiscreteObjectKeyFrame KeyTime="0:0:3.0">
+                                        <DiscreteObjectKeyFrame.Value>
+                                            <BitmapImage UriSource="C:\Users\musa\source\repos\paint_wpf_new\WpfApp9\Properties\gif\30.gif"/>
+                                        </DiscreteObjectKeyFrame.Value>
+                                    </DiscreteObjectKeyFrame>
+                                </ObjectAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </DataTrigger.EnterActions>
+                    <DataTrigger.ExitActions>
+                        <StopStoryboard BeginStoryboardName="AnimStart"/>
+                    </DataTrigger.ExitActions>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
     </Window.Resources>
     <Grid Background="AliceBlue" Margin="5">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="35*" MaxWidth="50"></ColumnDefinition>
             <ColumnDefinition Width="19*"/>
             <ColumnDefinition Width="682*" MinWidth="300"></ColumnDefinition>
-            <ColumnDefinition Width="50*" MaxWidth="50"></ColumnDefinition>
+            <ColumnDefinition Width="60*" MaxWidth="60"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
+            <RowDefinition Height="50" MinHeight="30" MaxHeight="60"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="50" MinHeight="30" MaxHeight="60"></RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel Name="MainTools" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
-            <Menu x:Name="menu"  VerticalAlignment="Center" HorizontalAlignment="Center">
+        <StackPanel Grid.Column="0" Grid.Row="0"  Grid.ColumnSpan="4" Orientation="Horizontal">
+            <Menu x:Name="menu"  VerticalAlignment="Top" HorizontalAlignment="Center">
                 <MenuItem Header="Файл">      
-                    <MenuItem Header="Открыть" ></MenuItem>
-                    <MenuItem Header="Закрыть" ></MenuItem>
-                    <MenuItem Header="Назад" ></MenuItem>      
-                    <MenuItem Header="Очистить" ></MenuItem>
-                    <MenuItem Header="Закрыть" ></MenuItem>
+                    <MenuItem Header="Открыть" Click="OpenP_Click" ></MenuItem>
+                    <MenuItem Header="Сохранить " Click="SaveP1_Click"></MenuItem>
+                    <MenuItem Header="Сохранить как" Click="SaveP_Click"></MenuItem>
+                    <MenuItem Header="Назад" Click="BBack_Click" ></MenuItem>       
+                    <MenuItem Header="Очистить" Click="BClear_Click" ></MenuItem>
                 </MenuItem>
             </Menu>
+            <Button Name="BNowColor" Margin="10,0,0,0" Height="35" Width="35" RenderTransformOrigin="0.5,0.5">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-1.134"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+            </Button>
+            <Button Name="BBlack" Cursor="Hand" Margin="10,0,0,0" Background="Black" Height="30" Width="30" Click="BBlack_Click"></Button>
+            <Button Name="BGray" Cursor="Hand" Background="Gray" Height="30" Width="30" Click="BGray_Click"></Button>
+            <Button Name="BWhite" Cursor="Hand" Background="White" Height="30" Width="30" Click="BWhite_Click"></Button>
+            <Button Name="BREd" Cursor="Hand"  Background="Red" Height="30" Width="30" Click="BRed_Click"></Button>
+            <Button Name="BOrange" Cursor="Hand" Background="Orange" Height="30" Width="30" Click="BOrange_Click"></Button>
+            <Button Name="BYellow" Cursor="Hand" Background="Yellow" Height="30" Width="30" Click="BYellow_Click"></Button>
+            <Button Name="BLawnGreen" Cursor="Hand" Background="LawnGreen" Height="30" Width="30" Click="BLawnGreen_Click"></Button>
+            <Button Name="BGreen" Cursor="Hand" Background="Green" Height="30" Width="30" Click="BGreen_Click"></Button>
+            <Button Name="BAquamarine" Cursor="Hand" Background="Aquamarine" Height="30" Width="30" Click="BAquamarine_Click"></Button>
+            <Button Name="BSkyBlue" Cursor="Hand" Background="DeepSkyBlue" Height="30" Width="30" Click="BSkyBlue_Click"></Button>
+            <Button Name="BBlue" Cursor="Hand" Background="Blue" Height="30" Width="30" Click="BBlue_Click"></Button>
+            <Button Name="BPurple" Cursor="Hand" Background="Purple" Height="30" Width="30" Click="BPurple_Click"></Button>
+            <Button Name="BPink" Cursor="Hand" Background="HotPink" Height="30" Width="30" Click="BPink_Click"></Button>
+            <Label  Name="SpaceLabel" Content="" Width="292"/>
+        </StackPanel>
+        <StackPanel Name="MainTools" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+
             <Label>TOOLS</Label>
-            <Button Name="Pencil" Height="40" Width="40" Click="Pencil_Click">
+            <Button Name="Pencil" Cursor="Hand" Height="40" Width="40" Click="Pencil_Click">
                 <Image Source="pack://application:,,,/Properties/image/pencil.png"/>
             </Button>
-            <Button Name="PenEraser" Height="40" Width="40" Click="PenEraser_Click">
+            <Button Name="PenEraser" Cursor="Hand" Height="40" Width="40" Click="PenEraser_Click">
                 <Image Source="pack://application:,,,/Properties/image/eraser.png" ></Image>
             </Button>
-            <Button Name="Brush" Height="40" Width="40" Click="Brush_Click" ToolTip="МОЖНО РИСОВАТЬ КРУГИ И ОВАЛЫ">
+            <Button Name="Brush"  Cursor="Hand" Height="40" Width="40" Click="Brush_Click" ToolTip="МОЖНО РИСОВАТЬ КРУГИ И ОВАЛЫ">
                 <Image Source="pack://application:,,,/Properties/image/brush.png"/>
             </Button>
             <TextBlock>
@@ -46,85 +246,64 @@
                     <TextBox Name="WidthBrush" Width="17" Text="3"></TextBox>
             </TextBlock>
 
-            <Button Name="BSmall" Height="40" Width="40" Click="BSmall_Click">
+            <Button Name="BSmall"  Cursor="Hand" Height="40" Width="40" Click="BSmall_Click">
                 <Ellipse Fill="Black" Height="5" Width="5"></Ellipse>
             </Button>
-            <Button Name="BMiddle" Height="40" Width="40" Click="BMiddle_Click">
+            <Button Name="BMiddle" Cursor="Hand" Height="40" Width="40" Click="BMiddle_Click">
                 <Ellipse Fill="Black" Height="10" Width="10"></Ellipse>
             </Button>
-            <Button Name="BBig" Height="40" Width="40" Click="BBig_Click">
+            <Button Name="BBig" Cursor="Hand" Height="40" Width="40" Click="BBig_Click">
                 <Ellipse Fill="Black" Height="15" Width="15"></Ellipse>
             </Button>
-            <Button Name="BClear" Content="CLEAR" Width="40" Click="BClear_Click"/>
 
         </StackPanel>
-        <StackPanel Name="OtherTools" Grid.Row="0" Grid.Column="3">
-            <Button Name="SizeOfAlbum" Margin="0,5,0,0" Height="20" ToolTip="Установить размер листа" Content="Size" Click="SizeOfAlbum_Click"/>
+        <StackPanel Name="OtherTools" Grid.Row="1" Grid.Column="3">
+            <Button Name="SizeOfAlbum" Cursor="Hand" Margin="0,5,0,0" Height="20" ToolTip="Установить размер листа" Content="Size" Click="SizeOfAlbum_Click"/>
             <Label>Height</Label>
             <TextBox Name="HeightAlbum" Text="550"></TextBox>
             <Label>Width</Label>
             <TextBox Name="WidthAlbum" Text="800"></TextBox>
-            <Button Name="BRectangle" Margin="0,5,0,0" Height="20" Click="BRectangle_Click">
+            <Button Name="BRectangle" Cursor="Hand" Margin="0,5,0,0" Height="20" Click="BRectangle_Click">
                 <Rectangle Height="12" Width="30" Stroke="Black" StrokeThickness="3"></Rectangle>
             </Button>
-            <Button Name="BCircle" Margin="0,5,0,0" Height="20" Click="BCircle_Click">
+            <Button Name="BCircle" Cursor="Hand" Margin="0,5,0,0" Height="20" Click="BCircle_Click">
                 <Ellipse Height="15" Width="15" Stroke="Black" StrokeThickness="2"></Ellipse>
             </Button>
-            <Button Name="BEllipse" Height="20" Margin="0,5,0,0" Click="BEllipse_Click">
+            <Button Name="BEllipse" Cursor="Hand" Height="20" Margin="0,5,0,0" Click="BEllipse_Click">
                 <Ellipse Height="10" Width="30" Stroke="Black" StrokeThickness="3"></Ellipse>
             </Button>
-            <Button Name="BLine" Margin="0,5,-0.255,0" Height="20" HorizontalAlignment="Right" Width="50" Click="BLine_Click">
+            <Button Name="BLine" Cursor="Hand" Margin="0,5,0,0" Height="20"  Click="BLine_Click">
                 <Line X1="5" X2="35" Y1="5" Y2="9" Stroke="Black" StrokeThickness="3"></Line>
             </Button>
-
-            <Button Name="BPolyLine" Height="20" Margin="0,5,0,0" Click="BPolyLine_Click" HorizontalAlignment="Left" Width="50">
+            <Button Name="BPolyLine" Cursor="Hand" Height="20" Margin="0,5,0,0" Click="BPolyLine_Click">
                 <Polyline Stroke="Black" StrokeThickness="2" Points="5,10 15,2 35,10"></Polyline>
             </Button>
+            <CheckBox x:Name="checkBox" Content="Select" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
 
 
         </StackPanel>
-        <StackPanel Name="BottonPanel" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Orientation="Horizontal">
-            <!--<Button Name="BNowColor" Margin="10,0,0,0" Background="{Binding ElementName=Album, Path=DefaultDrawingAttributes.Color  }" Height="35" Width="35"></Button>-->
-            <Button Name="BNowColor" Margin="10,0,0,0" Height="35" Width="35" RenderTransformOrigin="0.5,0.5">
-                <Button.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="-1.134"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </Button.RenderTransform>
-            </Button>
-            <Button Name="BBlack" Margin="10,0,0,0" Background="Black" Height="30" Width="30" Click="BBlack_Click"></Button>
-            <Button Name="BGray" Background="Gray" Height="30" Width="30" Click="BGray_Click"></Button>
-            <Button Name="BWhite" Background="White" Height="30" Width="30" Click="BWhite_Click"></Button>
-            <Button Name="BREd"  Background="Red" Height="30" Width="30" Click="BRed_Click"></Button>
-            <Button Name="BOrange" Background="Orange" Height="30" Width="30" Click="BOrange_Click"></Button>
-            <Button Name="BYellow" Background="Yellow" Height="30" Width="30" Click="BYellow_Click"></Button>
-            <Button Name="BLawnGreen" Background="LawnGreen" Height="30" Width="30" Click="BLawnGreen_Click"></Button>
-            <Button Name="BGreen" Background="Green" Height="30" Width="30" Click="BGreen_Click"></Button>
-            <Button Name="BAquamarine" Background="Aquamarine" Height="30" Width="30" Click="BAquamarine_Click"></Button>
-            <Button Name="BSkyBlue" Background="DeepSkyBlue" Height="30" Width="30" Click="BSkyBlue_Click"></Button>
-            <Button Name="BBlue" Background="Blue" Height="30" Width="30" Click="BBlue_Click"></Button>
-            <Button Name="BPurple" Background="Purple" Height="30" Width="30" Click="BPurple_Click"></Button>
-            <Button Name="BPink" Background="HotPink" Height="30" Width="30" Click="BPink_Click"></Button>
-            <Button Name ="BBack" Margin="0,0,0,0" Height="40" Width="40" Click="BBack_Click">
-                <Image Source="pack://application:,,,/Properties/image/back.jpg"/>
-            </Button>
-            <Button Name ="SaveP" Margin="10,0,0,0" Height="40" Width="40" Click="SaveP_Click">
-                <Image Source="pack://application:,,,/Properties/image/SaveP.png"/>
-            </Button>
-            <Button Name ="OpenP" Height="40" Width="40" Click="OpenP_Click">
-                <Image Source="pack://application:,,,/Properties/image/OpenP.png" RenderTransformOrigin="2.778,0.556"/>
-            </Button>
-
-
-        </StackPanel>
-        <InkCanvas Name="Album" Cursor="Pen" Height="350" Width="650" Grid.Row="0" Grid.Column="2" Background="White" MouseLeftButtonUp="Album_PreviewMouseLeftButtonUp" PreviewMouseLeftButtonDown="Album_PreviewMouseLeftButtonDown" PreviewMouseMove="Album_PreviewMouseMove" Margin="16,54,16,55" PreviewMouseLeftButtonUp="Album_PreviewMouseLeftButtonUp">
-            <InkCanvas.DefaultDrawingAttributes>
-                <DrawingAttributes Height="2" Width="2" Color="Black"/>
-            </InkCanvas.DefaultDrawingAttributes>
-        </InkCanvas>
+        <Border BorderThickness="2" Margin="0,0,0,0" Grid.Row="1" Grid.Column="2" CornerRadius="3" >
+            <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" >
+                <InkCanvas Name="Album" Cursor="Pen" Width="auto" Height="auto" Background="White" MouseLeftButtonUp="Album_PreviewMouseLeftButtonUp" PreviewMouseLeftButtonDown="Album_PreviewMouseLeftButtonDown" PreviewMouseMove="Album_PreviewMouseMove" Margin="0" PreviewMouseLeftButtonUp="Album_PreviewMouseLeftButtonUp">
+                    <InkCanvas.CommandBindings>
+                        <CommandBinding Command="Copy" Executed="CopyCommand" />
+                        <CommandBinding Command="Paste" Executed="PasteCommand" />
+                    </InkCanvas.CommandBindings>
+                    <InkCanvas.InputBindings>
+                        <KeyBinding Key="V" Modifiers="Control" Command="Paste" />
+                        <KeyBinding Key="C" Modifiers="Control" Command="Copy" />
+                    </InkCanvas.InputBindings>
+                    <InkCanvas.DefaultDrawingAttributes>
+                        <DrawingAttributes Height="2" Width="2" Color="Black"/>
+                    </InkCanvas.DefaultDrawingAttributes>
+                </InkCanvas>
+            </ScrollViewer>
+        </Border>
+        <Image Name="img" HorizontalAlignment="Left" Height="110" Margin="701,470,0,0" VerticalAlignment="Top" Width="125" Style="{StaticResource ImgStyleDataTrigger}"  Grid.Row="1" Grid.Column="2" >
+        </Image>
+        <TextBlock Name="Coord"   TextWrapping="Wrap" Text="." Width="337" Margin="0,0,157,10"  Grid.Row="2" Grid.Column="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="15" />
+        <Label Name="NumCh" HorizontalAlignment="Right" Width="144" Margin="0,0,8,10"  Grid.Row="2" Grid.Column="2" VerticalAlignment="Bottom"/>
+        <ToggleButton Content="a" Name="but" Margin="10,565,810,9"  Grid.Row="2" Grid.Column="2" IsChecked="True" Background="Yellow" Visibility="Collapsed" />
 
 
     </Grid>

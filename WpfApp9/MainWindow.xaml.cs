@@ -1,23 +1,14 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Ink;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Drawing;
-using System.Threading;
-using System.Windows.Media.Animation;
+
 
 namespace RealArtist
 {
@@ -28,9 +19,16 @@ namespace RealArtist
         public MainWindow()
         {
             InitializeComponent();
+            rectangle1();
+
         }
 
         public string Shape { get; set; } = "noShape";                  //значение выбранной фигуры
+        public string CurShape = "noShape";     
+        public string Space;                                           //расположние файла
+        public bool SpaceToogle=false;
+       
+        Point start;
 
         public Brush drawC;                                             //свойство цвета
         private Brush DrawC
@@ -46,6 +44,20 @@ namespace RealArtist
             }
         }
         public Color drawBrushC;                                        //свойство цвета 
+        private Polyline myPolyline;
+        private Rectangle myRect;
+
+        public void rectangle1()
+        {
+            myRect = new System.Windows.Shapes.Rectangle();
+            myRect.Stroke = System.Windows.Media.Brushes.Black;
+            myRect.Fill = System.Windows.Media.Brushes.SkyBlue;
+            myRect.HorizontalAlignment = HorizontalAlignment.Left;
+            myRect.VerticalAlignment = VerticalAlignment.Center;
+            myRect.Height = 50;
+            myRect.Width = 50;
+            Album.Children.Add(myRect);
+        }
         private Color DrawBrushC
         {
             get
@@ -66,12 +78,27 @@ namespace RealArtist
         public Point FirstPoint { get; set; }                           //точка нажатия мыши    
         public PointCollection PointC { get; set; }                     //коллекция точек
 
+        public void polyline1()
+        {
+            // Add the Polyline Element
+            myPolyline = new Polyline();
+            myPolyline.Stroke = System.Windows.Media.Brushes.SlateGray;
+            myPolyline.StrokeThickness = 2;
+            myPolyline.FillRule = FillRule.EvenOdd;
+            System.Windows.Point Point4 = new System.Windows.Point(1, 50);
+            System.Windows.Point Point5 = new System.Windows.Point(10, 80);
+            System.Windows.Point Point6 = new System.Windows.Point(20, 40);
+            PointCollection myPointCollection2 = new PointCollection();
+            myPointCollection2.Add(Point4);
+            myPointCollection2.Add(Point5);
+            myPointCollection2.Add(Point6);
+            myPolyline.Points = myPointCollection2;
+            Album.Children.Add(myPolyline);
+        }
         public void PenEraser_Click(object sender, RoutedEventArgs e)       //стирает нарисованное
         {
             Shape = "noShape";
-            Album.DefaultDrawingAttributes.Height = 40;
-            Album.DefaultDrawingAttributes.Width = 40;
-            Album.DefaultDrawingAttributes.Color = Colors.White;
+            Album.EditingMode = InkCanvasEditingMode.EraseByPoint;
         }
 
         private void BGray_Click(object sender, RoutedEventArgs e)      //меняет цвет кисти
@@ -152,6 +179,23 @@ namespace RealArtist
             DrawC = Brushes.HotPink;
         }
 
+        public static void CopyUIElementToClipboard(FrameworkElement element) //Копирование канвы в bitmap в буфер обмена
+        {
+            double width = element.ActualWidth;
+            double height = element.ActualHeight;
+            RenderTargetBitmap bmpCopied = new RenderTargetBitmap((int)Math.Round(width), (int)Math.Round(height), 96,
+                96, PixelFormats.Default);
+            DrawingVisual dv = new DrawingVisual();
+            using (DrawingContext dc = dv.RenderOpen())
+            {
+                VisualBrush vb = new VisualBrush(element);
+                dc.DrawRectangle(vb, null, new Rect(new Point(), new Size(width, height)));
+            }
+
+            bmpCopied.Render(dv);
+            Clipboard.SetImage(bmpCopied);
+        }
+
         private void BSmall_Click(object sender, RoutedEventArgs e)     //устанавливает толщину кисти на минимальный
         {
             Album.DefaultDrawingAttributes.Height = 2;
@@ -175,6 +219,7 @@ namespace RealArtist
 
         private void Pencil_Click(object sender, RoutedEventArgs e)             //выбор карандаша
         {
+            Album.EditingMode = InkCanvasEditingMode.Ink;
             Shape = "noShape";
             Album.DefaultDrawingAttributes.Color = DrawBrushC;
             Album.DefaultDrawingAttributes.Height = 2;
@@ -203,6 +248,7 @@ namespace RealArtist
 
         private void Brush_Click(object sender, RoutedEventArgs e)                          //определяет форму кисти шётки
         {
+            Album.EditingMode = InkCanvasEditingMode.Ink;
             Shape = "noShape";
             Album.DefaultDrawingAttributes.Color = DrawBrushC;
             try
@@ -241,13 +287,20 @@ namespace RealArtist
 
         private void Album_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)        //действия при нажатии левой кнопки мыши мыши
         {
-            FirstPoint = new Point(e.GetPosition(Album).X, e.GetPosition(Album).Y);
-            FormSelection();
-            Toggle = true;
+            
+                start = e.GetPosition(this);
+                FirstPoint = new Point(e.GetPosition(Album).X, e.GetPosition(Album).Y);
+                FormSelection();
+                Toggle = true;
         }
 
         private void Album_PreviewMouseMove(object sender, MouseEventArgs e)                //собыьтие при перемещении мыши 
         {
+
+            NumCh.Content = Album.Children.Count;
+            var x = e.GetPosition(Album).X - e.GetPosition(Album).X % 0.001;
+            var y = e.GetPosition(Album).Y - e.GetPosition(Album).Y % 0.001;
+            Coord.Text = x + " , " + y;
             if (Shape == "noShape")
             {
                 return;
@@ -261,6 +314,7 @@ namespace RealArtist
                 X = e.GetPosition(Album).X,
                 Y = e.GetPosition(Album).Y
             };
+
             switch (Shape)
             {
                 case "Line":
@@ -304,12 +358,12 @@ namespace RealArtist
                     }
                     else DrawPolyLine();
                     break;
- 
+
                 default:
                     break;
             }
         }
-       
+
 
         private void DrawLine(Point p1, Point p2)                                                 //рисует линию
         {
@@ -351,7 +405,7 @@ namespace RealArtist
             Album.Children.Add(myEllipse);
         }
 
-        
+
 
         private void DrawPolyLine()                                             //создание объекта, многоугольника не замкнутого
         {
@@ -369,9 +423,9 @@ namespace RealArtist
             Album.Children.Add(myPolyline);
         }
 
-        
 
-        private void FinishPolyLine()                                               //добавление на рисунок обьекта многолинейника :) 
+
+        private void FinishPolyLine()                                               //добавление на рисунок обьекта многолинейника
         {
             Polyline Poly = (Polyline)Album.Children[Album.Children.Count - 1];
             Poly.Points.Add(FirstPoint);
@@ -413,12 +467,12 @@ namespace RealArtist
 
         private void FinishCircle(Point p)                                          //рисование круга при нажатой левой кнопки мыши
         {
-            
+
             Ellipse newCircle = (Ellipse)Album.Children[Album.Children.Count - 1];
             double tempX, tempY, tempW, tempH;
 
             //определение диаметра круга
-        
+
             tempW = 2 * Math.Abs((p.X) - FirstPoint.X);
             tempH = 2 * Math.Abs((p.Y) - FirstPoint.Y);
 
@@ -451,29 +505,113 @@ namespace RealArtist
 
         private void SaveP_Click(object sender, RoutedEventArgs e)                          //сохранение рисунка
         {
-            SaveFileDialog saveimg = new SaveFileDialog();
-            saveimg.FileName = "Рисунок";
-            saveimg.Filter = "Bitmap Image (.bmp)|*.bmp";
+            var saveimg = new SaveFileDialog
+            {
+                FileName = "Изображение",
+                Filter =
+                    "Ink Serialized Format (*.isf)|*.isf|" +
+                    "Bitmap Image (.bmp)|*.bmp|Gif Image (.gif)|*.gif|JPEG Image (.jpeg)|*.jpeg|Png Image (.png)|*.png"
+            };
 
-            bool? result = saveimg.ShowDialog();
+            var result = saveimg.ShowDialog();
             if (result == true)
             {
-                string filename = saveimg.FileName;
-                var fs = new FileStream(filename, FileMode.Create);
-                Album.Strokes.Save(fs);
+                using (FileStream file = new FileStream(saveimg.FileName,
+                    FileMode.Create, FileAccess.Write))
+                {
+                    if (saveimg.FilterIndex == 1)
+                    {
+                        //InkCanvas1.Children.
+                        Album.Strokes.Save(file);
+                        file.Close();
+                    }
+                    else
+                    {
+                        var marg = 0;
+                        RenderTargetBitmap rtb = new RenderTargetBitmap((int)Album.ActualWidth - marg,
+                            (int)Album.ActualHeight - marg, 0, 0, PixelFormats.Default);
+                        rtb.Render(Album);
+                        BmpBitmapEncoder encoder = new BmpBitmapEncoder();
+                        encoder.Frames.Add(BitmapFrame.Create(rtb));
+                        encoder.Save(file);
+                        file.Close();
+                    }
+                }
             }
+
+        }
+
+        private void SaveP1_Click(object sender, RoutedEventArgs e)                          //сохранение рисунка
+        {
+           
+            if (SpaceToogle == true)
+            {
+                using (FileStream file = new FileStream(Space,
+                    FileMode.OpenOrCreate, FileAccess.ReadWrite))
+                {
+                    if (System.IO.Path.GetExtension(Space) == ".isf")
+                    {
+                        Album.Strokes.Save(file);
+                        file.Close();
+                    }
+                    else
+                    {
+                        var marg = 0;   //int.Parse(Album.Margin.Right.ToString());
+                        RenderTargetBitmap rtb = new RenderTargetBitmap((int)Album.ActualWidth - marg,
+                            (int)Album.ActualHeight - marg, 0, 0, PixelFormats.Default);
+                        rtb.Render(Album);
+                        BmpBitmapEncoder encoder = new BmpBitmapEncoder();
+                        encoder.Frames.Add(BitmapFrame.Create(rtb));
+                        encoder.Save(file);
+                        file.Close();
+                    }
+                }
+            }
+            else
+            {
+                SaveP_Click(sender, e);
+            }
+
         }
 
         private void OpenP_Click(object sender, RoutedEventArgs e)                          //открытие рисунка
         {
-            OpenFileDialog openImg = new OpenFileDialog();
+            var openImg = new OpenFileDialog();
             openImg.FileName = "*";
-            openImg.Filter = "Bitmap Image (.bmp)|*.bmp";
+            openImg.Filter =
+                "Ink Serialized Format (*.isf)|*.isf|" +
+                "Bitmap Image (.bmp)|*.bmp|Gif Image (.gif)|*.gif|JPEG Image (.jpeg)|*.jpeg|Png Image (.png)|*.png";
             var result = openImg.ShowDialog();
-            if (result != true) return;
-            string filename = openImg.FileName;
-            var fs = new FileStream(filename, FileMode.Open, FileAccess.Read);
-            Album.Strokes = new StrokeCollection(fs);
+            if (result == true)
+            {
+                Album.Background = Brushes.White;
+                Album.Strokes.Clear();
+                try
+                {
+                    using (FileStream file = new FileStream(openImg.FileName,
+                        FileMode.Open, FileAccess.Read))
+                    {
+                        if (openImg.FileName.ToLower().EndsWith(".isf"))
+                        {
+                            Album.Strokes = new StrokeCollection(file);
+                            file.Close();
+                        }
+                        else
+                        {
+                            ImageBrush brush = new ImageBrush();
+                            brush.ImageSource = new BitmapImage(new Uri(openImg.FileName, UriKind.Relative));
+                            Album.Background = brush;
+                        }
+                    }
+                    SpaceLabel.Content = openImg.FileName;
+                    SpaceToogle = true;
+                }
+                catch (Exception exc)
+                {
+                    MessageBox.Show(exc.Message, Title);
+                }
+            }
+
         }
 
         private void BPolyLine_Click(object sender, RoutedEventArgs e)                  //меняет режим рисования фигуры
@@ -498,7 +636,7 @@ namespace RealArtist
         }
 
 
-        
+
 
 
         private void PreFormSelection()                                 //дополнительные настройки 
@@ -507,7 +645,7 @@ namespace RealArtist
             {
                 TogglePolyLine = false;
             }
-            
+
             if (Shape != "noShape")
             {
                 Album.UseCustomCursor = true;
@@ -517,7 +655,40 @@ namespace RealArtist
                 Album.UseCustomCursor = false;
         }
 
-       
-    }
 
+        private void CopyCommand(object sender, ExecutedRoutedEventArgs e) //Обработчик ктрл+с
+        {
+            CopyUIElementToClipboard(Album);
+        }
+
+        private void PasteCommand(object sender, ExecutedRoutedEventArgs e) //обработчик ктрл+в
+        {
+            if (Album.CanPaste())
+            {
+                Album.Paste(new Point(100, 100));
+            }
+        }
+
+
+
+     
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            CurShape = Shape;
+            Shape = "";
+            Toggle = false;
+            TogglePolyLine = false;
+            Album.EditingMode = InkCanvasEditingMode.Select;
+        }
+
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            
+            Shape = CurShape;
+            
+            Album.EditingMode = InkCanvasEditingMode.Ink;
+        }
+      
+    }
 }

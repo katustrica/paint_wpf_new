@@ -109,5 +109,38 @@
     <Resource Include="Properties\image\SaveP.png" />
     <Resource Include="Properties\image\SelectO.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Properties\gif\0.gif" />
+    <Resource Include="Properties\gif\1.gif" />
+    <Resource Include="Properties\gif\10.gif" />
+    <Resource Include="Properties\gif\11.gif" />
+    <Resource Include="Properties\gif\12.gif" />
+    <Resource Include="Properties\gif\13.gif" />
+    <Resource Include="Properties\gif\14.gif" />
+    <Resource Include="Properties\gif\15.gif" />
+    <Resource Include="Properties\gif\16.gif" />
+    <Resource Include="Properties\gif\17.gif" />
+    <Resource Include="Properties\gif\18.gif" />
+    <Resource Include="Properties\gif\19.gif" />
+    <Resource Include="Properties\gif\2.gif" />
+    <Resource Include="Properties\gif\20.gif" />
+    <Resource Include="Properties\gif\21.gif" />
+    <Resource Include="Properties\gif\22.gif" />
+    <Resource Include="Properties\gif\23.gif" />
+    <Resource Include="Properties\gif\24.gif" />
+    <Resource Include="Properties\gif\25.gif" />
+    <Resource Include="Properties\gif\26.gif" />
+    <Resource Include="Properties\gif\27.gif" />
+    <Resource Include="Properties\gif\28.gif" />
+    <Resource Include="Properties\gif\29.gif" />
+    <Resource Include="Properties\gif\3.gif" />
+    <Resource Include="Properties\gif\30.gif" />
+    <Resource Include="Properties\gif\4.gif" />
+    <Resource Include="Properties\gif\5.gif" />
+    <Resource Include="Properties\gif\6.gif" />
+    <Resource Include="Properties\gif\7.gif" />
+    <Resource Include="Properties\gif\8.gif" />
+    <Resource Include="Properties\gif\9.gif" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
