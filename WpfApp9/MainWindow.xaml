@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MusaAlbum" Height="731" Width="1000" Background="CadetBlue" Visibility="Visible" Icon="pack://application:,,,/Properties/image/icon.png" HorizontalAlignment="Center"  VerticalAlignment="Center" >
     <Window.Resources>
-        <Style x:Key="ImgStyleDataTrigger" TargetType="Image">
+        <!--<Style x:Key="ImgStyleDataTrigger" TargetType="Image">
             <Style.Triggers>
                 <DataTrigger Binding="{Binding ElementName=but, Path=IsChecked}" Value="True">
                     <DataTrigger.EnterActions>
@@ -13,7 +13,7 @@
 
                                     <DiscreteObjectKeyFrame KeyTime="0:0:0">
                                         <DiscreteObjectKeyFrame.Value>
-                                            <BitmapImage UriSource="C:\Users\musa\source\repos\paint_wpf_new\WpfApp9\Properties\gif\0.gif"/>
+                                            <BitmapImage UriSource="pack://application:,,,/Properties/image/gif/0.gif"/>
                                         </DiscreteObjectKeyFrame.Value>
                                     </DiscreteObjectKeyFrame>
                                     <DiscreteObjectKeyFrame KeyTime="0:0:.1">
@@ -175,7 +175,7 @@
                     </DataTrigger.ExitActions>
                 </DataTrigger>
             </Style.Triggers>
-        </Style>
+        </Style>-->
     </Window.Resources>
     <Grid Background="AliceBlue" Margin="5">
         <Grid.ColumnDefinitions>
@@ -284,7 +284,7 @@
         </StackPanel>
         <Border BorderThickness="2" Margin="0,0,0,0" Grid.Row="1" Grid.Column="2" CornerRadius="3" >
             <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" >
-                <InkCanvas Name="Album" Cursor="Pen" Width="auto" Height="auto" Background="White" MouseLeftButtonUp="Album_PreviewMouseLeftButtonUp" PreviewMouseLeftButtonDown="Album_PreviewMouseLeftButtonDown" PreviewMouseMove="Album_PreviewMouseMove" Margin="0" PreviewMouseLeftButtonUp="Album_PreviewMouseLeftButtonUp">
+                <InkCanvas Name="Album" Cursor="Pen" Width="auto" Height="auto" Background="White" MouseLeftButtonUp="Album_PreviewMouseLeftButtonUp" PreviewMouseLeftButtonDown="Album_PreviewMouseLeftButtonDown" PreviewMouseMove="Album_PreviewMouseMove" Margin="0,0,0,-11" PreviewMouseLeftButtonUp="Album_PreviewMouseLeftButtonUp">
                     <InkCanvas.CommandBindings>
                         <CommandBinding Command="Copy" Executed="CopyCommand" />
                         <CommandBinding Command="Paste" Executed="PasteCommand" />
